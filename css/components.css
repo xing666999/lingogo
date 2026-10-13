@@ -1,0 +1,343 @@
+/* ===== LingoGo 通用组件 ===== */
+
+/* 卡片 */
+.card {
+  background: var(--c-bg-card);
+  border-radius: var(--r-lg);
+  padding: var(--sp-5);
+  box-shadow: var(--sh-card);
+  border: 2px solid var(--c-border-soft);
+}
+
+.card-tap {
+  cursor: pointer;
+  transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast);
+  -webkit-tap-highlight-color: transparent;
+}
+.card-tap:active { transform: scale(.97); box-shadow: var(--sh-sm); }
+
+/* 列表项 */
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-4) var(--sp-5);
+  background: var(--c-bg);
+  border-bottom: 2px solid var(--c-border-soft);
+}
+.list-item:last-child { border-bottom: none; }
+.list-item-tap { cursor: pointer; transition: background var(--t-fast); }
+.list-item-tap:active { background: var(--c-bg-soft); }
+
+/* 进度环 SVG */
+.progress-ring { position: relative; display: inline-flex; align-items: center; justify-content: center; }
+.progress-ring svg { transform: rotate(-90deg); }
+.progress-ring .ring-bg { stroke: var(--c-border); }
+.progress-ring .ring-fg { stroke: var(--c-primary); transition: stroke-dashoffset .6s var(--ease); stroke-linecap: round; }
+.progress-ring-text { position: absolute; font-weight: 900; }
+
+/* 徽章 */
+.badge-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--sp-4);
+  background: var(--c-bg);
+  border-radius: var(--r-md);
+  border: 2px solid var(--c-border-soft);
+  text-align: center;
+  gap: var(--sp-2);
+}
+.badge-card.locked { filter: grayscale(1) opacity(.4); }
+.badge-icon { font-size: 40px; }
+.badge-name { font-weight: 800; font-size: var(--fs-sm); }
+.badge-desc { font-size: var(--fs-xs); color: var(--c-text-soft); }
+
+/* 热力图格子 */
+.heatmap {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  gap: 3px;
+  padding: var(--sp-3);
+}
+.heat-cell {
+  aspect-ratio: 1;
+  border-radius: 3px;
+  background: var(--c-border-soft);
+}
+.heat-cell.l1 { background: #c6e8a0; }
+.heat-cell.l2 { background: #8fd14f; }
+.heat-cell.l3 { background: #58cc02; }
+.heat-cell.l4 { background: #3a8c00; }
+
+/* 模态框 */
+.modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.modal-root.show { display: flex; }
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  animation: fadeIn .2s var(--ease);
+}
+.modal-box {
+  position: relative;
+  background: var(--c-bg);
+  border-radius: var(--r-xl);
+  padding: var(--sp-6);
+  margin: var(--sp-4);
+  max-width: 440px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: bounceIn .3s var(--ease-bounce);
+}
+
+/* Toast */
+.toast-root {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 300;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  pointer-events: none;
+}
+.toast {
+  padding: 12px 20px;
+  border-radius: var(--r-md);
+  background: #333;
+  color: #fff;
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  box-shadow: 0 4px 16px rgba(0,0,0,.2);
+  animation: toastIn .3s var(--ease-bounce);
+  max-width: 320px;
+}
+.toast.success { background: var(--c-primary); }
+.toast.error { background: var(--c-accent); }
+.toast.warn { background: var(--c-warn); }
+.toast.info { background: var(--c-secondary); }
+
+/* 撒花容器 */
+.confetti-root {
+  position: fixed;
+  inset: 0;
+  z-index: 250;
+  pointer-events: none;
+  overflow: hidden;
+}
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 14px;
+  top: -20px;
+  animation: confettiFall linear forwards;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-8) var(--sp-4);
+  color: var(--c-text-faint);
+  text-align: center;
+  gap: var(--sp-3);
+}
+.empty-state .empty-icon { font-size: 48px; opacity: .6; }
+
+/* 标签 */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  background: var(--c-bg-soft);
+  border-radius: var(--r-full);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--c-text-soft);
+  gap: 4px;
+}
+.tag-primary { background: #e8f5d0; color: var(--c-primary-dark); }
+.tag-secondary { background: #d0eefb; color: #1899d6; }
+
+/* 进度条 */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--c-border-soft);
+  border-radius: var(--r-full);
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: var(--c-primary);
+  border-radius: var(--r-full);
+  transition: width .4s var(--ease);
+}
+
+/* XP 飘字 */
+.xp-fly {
+  position: fixed;
+  font-size: var(--fs-xl);
+  font-weight: 900;
+  color: var(--c-gold);
+  pointer-events: none;
+  z-index: 400;
+  animation: xpFly 1s var(--ease) forwards;
+  text-shadow: 0 2px 4px rgba(0,0,0,.2);
+}
+
+/* 星级 */
+.stars { display: inline-flex; gap: 2px; }
+.star { font-size: 20px; color: var(--c-border); }
+.star.filled { color: var(--c-gold); }
+
+/* 标签页 */
+.tabs {
+  display: flex;
+  gap: var(--sp-2);
+  padding: var(--sp-2) 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab-item {
+  padding: 8px 16px;
+  border-radius: var(--r-full);
+  background: var(--c-bg-soft);
+  color: var(--c-text-soft);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all var(--t-fast);
+  -webkit-tap-highlight-color: transparent;
+}
+.tab-item.active { background: var(--c-primary); color: #fff; }
+
+/* 选项按钮（用于选择题）*/
+.choice {
+  width: 100%;
+  padding: var(--sp-4);
+  background: var(--c-bg);
+  border: 2px solid var(--c-border);
+  border-radius: var(--r-md);
+  font-weight: 700;
+  font-size: var(--fs-md);
+  text-align: left;
+  transition: all var(--t-fast);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: var(--sh-md);
+}
+.choice:active { transform: translateY(2px); box-shadow: none; }
+.choice.selected { border-color: var(--c-secondary); background: #f0f8ff; }
+.choice.correct { border-color: var(--c-primary); background: #f0fae8; }
+.choice.wrong { border-color: var(--c-accent); background: #fff0f0; animation: shake .4s; }
+.choice:disabled { cursor: default; }
+
+/* 音频按钮 */
+.audio-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--r-full);
+  background: var(--c-secondary);
+  color: #fff;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--sh-btn-sec);
+  cursor: pointer;
+  transition: transform var(--t-fast);
+  -webkit-tap-highlight-color: transparent;
+}
+.audio-btn:active { transform: translateY(2px); box-shadow: none; }
+.audio-btn.playing { animation: pulse 1s var(--ease) infinite; }
+
+/* 麦克风按钮 */
+.mic-btn {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--r-full);
+  background: var(--c-accent);
+  color: #fff;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 0 #cc3b3b;
+  cursor: pointer;
+  transition: transform var(--t-fast);
+  -webkit-tap-highlight-color: transparent;
+}
+.mic-btn:active { transform: translateY(2px); }
+.mic-btn.recording { animation: micPulse 1.2s var(--ease) infinite; }
+
+/* 卡片翻转 3D */
+.flashcard {
+  width: 100%;
+  aspect-ratio: 4/3;
+  perspective: 1000px;
+  cursor: pointer;
+}
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform .6s var(--ease);
+}
+.flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
+.flashcard-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--r-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-6);
+  text-align: center;
+  gap: var(--sp-3);
+  border: 3px solid var(--c-border-soft);
+  box-shadow: var(--sh-card);
+}
+.flashcard-front { background: linear-gradient(135deg, #fff, #f7f7f7); }
+.flashcard-back { background: linear-gradient(135deg, #fff8e1, #fff); transform: rotateY(180deg); }
+
+/* 连续天数火焰 */
+.streak-fire {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 900;
+  color: var(--c-warn);
+}
+.streak-fire .fire-icon { animation: flameWiggle 1s ease-in-out infinite; }
+
+/* 顶部 XP 显示 */
+.xp-display {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 900;
+  color: var(--c-gold);
+}
+
+/* 分割线 */
+.divider { height: 2px; background: var(--c-border-soft); margin: var(--sp-4) 0; border: none; }
