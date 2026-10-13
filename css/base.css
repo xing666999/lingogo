@@ -1,0 +1,175 @@
+/* ===== LingoGo Base · 设计令牌与基础重置 ===== */
+:root {
+  /* 主色板 - 活泼游戏化 */
+  --c-primary: #58CC02;
+  --c-primary-dark: #46a302;
+  --c-primary-light: #6ee509;
+  --c-secondary: #1CB0F6;
+  --c-accent: #FF4B4B;
+  --c-warn: #FF9600;
+  --c-gold: #FFC800;
+
+  /* 语种主题色 */
+  --c-en: #1CB0F6;
+  --c-ja: #FF4B4B;
+  --c-ko: #00B8A9;
+
+  /* 中性色 */
+  --c-bg: #fff;
+  --c-bg-soft: #f7f7f7;
+  --c-bg-card: #ffffff;
+  --c-text: #3c3c3c;
+  --c-text-soft: #777;
+  --c-text-faint: #afafaf;
+  --c-border: #e5e5e5;
+  --c-border-soft: #f0f0f0;
+
+  /* 语义色 */
+  --c-success: #58CC02;
+  --c-error: #FF4B4B;
+  --c-info: #1CB0F6;
+
+  /* 圆角 */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  --r-full: 9999px;
+
+  /* 阴影 - 下方立体感（多邻国风） */
+  --sh-sm: 0 1px 2px rgba(0,0,0,.06);
+  --sh-md: 0 2px 0 var(--c-border);
+  --sh-lg: 0 4px 0 var(--c-border);
+  --sh-btn: 0 4px 0 var(--c-primary-dark);
+  --sh-btn-sec: 0 4px 0 #1899d6;
+  --sh-card: 0 2px 12px rgba(0,0,0,.08);
+
+  /* 间距 */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+
+  /* 字体 */
+  --ff: 'Nunito', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif;
+  --fs-xs: 12px;
+  --fs-sm: 14px;
+  --fs-md: 16px;
+  --fs-lg: 18px;
+  --fs-xl: 22px;
+  --fs-2xl: 28px;
+  --fs-3xl: 36px;
+
+  /* 动效 */
+  --ease: cubic-bezier(.2,.8,.2,1);
+  --ease-bounce: cubic-bezier(.34,1.56,.64,1);
+  --t-fast: .15s;
+  --t-norm: .25s;
+  --t-slow: .4s;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--ff);
+  font-size: var(--fs-md);
+  color: var(--c-text);
+  background: var(--c-bg-soft);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+button, input, textarea, select { font-family: inherit; font-size: inherit; color: inherit; }
+button { cursor: pointer; border: none; background: none; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+img, svg { display: block; max-width: 100%; }
+
+.hidden { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+/* ===== 按钮 ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  padding: 14px 24px;
+  font-size: var(--fs-md);
+  font-weight: 800;
+  border-radius: var(--r-md);
+  background: #e5e5e5;
+  color: var(--c-text-faint);
+  box-shadow: var(--sh-md);
+  transition: transform var(--t-fast) var(--ease), filter var(--t-fast);
+  user-select: none;
+  border: 2px solid transparent;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn:active { transform: translateY(2px); box-shadow: 0 0 0 var(--c-border); }
+.btn:disabled { opacity: .6; cursor: not-allowed; }
+
+.btn-primary { background: var(--c-primary); color: #fff; box-shadow: var(--sh-btn); border-color: var(--c-primary); }
+.btn-primary:active { box-shadow: 0 0 0 var(--c-primary-dark); }
+
+.btn-secondary { background: var(--c-secondary); color: #fff; box-shadow: var(--sh-btn-sec); border-color: var(--c-secondary); }
+.btn-secondary:active { box-shadow: 0 0 0 #1899d6; }
+
+.btn-danger { background: var(--c-accent); color: #fff; box-shadow: 0 4px 0 #cc3b3b; border-color: var(--c-accent); }
+.btn-ghost { background: #fff; color: var(--c-text-soft); border-color: var(--c-border); }
+.btn-ghost:active { box-shadow: 0 0 0 var(--c-border); }
+
+.btn-lg { padding: 16px 32px; font-size: var(--fs-lg); }
+.btn-sm { padding: 8px 14px; font-size: var(--fs-sm); }
+.btn-block { width: 100%; }
+
+/* ===== 表单 ===== */
+.input, .textarea, .select {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: var(--fs-md);
+  background: #fff;
+  border: 2px solid var(--c-border);
+  border-radius: var(--r-md);
+  outline: none;
+  transition: border-color var(--t-fast);
+}
+.input:focus, .textarea:focus, .select:focus { border-color: var(--c-secondary); }
+.textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+
+.field { margin-bottom: var(--sp-4); }
+.field-label { display: block; font-weight: 700; margin-bottom: var(--sp-2); color: var(--c-text); font-size: var(--fs-sm); }
+
+/* ===== 文字工具 ===== */
+.t-center { text-align: center; }
+.t-right { text-align: right; }
+.fw-bold { font-weight: 800; }
+.fw-extrabold { font-weight: 900; }
+.fs-xl { font-size: var(--fs-xl); }
+.fs-2xl { font-size: var(--fs-2xl); }
+.fs-3xl { font-size: var(--fs-3xl); }
+.c-primary { color: var(--c-primary); }
+.c-secondary { color: var(--c-secondary); }
+.c-accent { color: var(--c-accent); }
+.c-soft { color: var(--c-text-soft); }
+.c-faint { color: var(--c-text-faint); }
+
+.mt-2 { margin-top: var(--sp-2); }
+.mt-4 { margin-top: var(--sp-4); }
+.mt-6 { margin-top: var(--sp-6); }
+.mt-8 { margin-top: var(--sp-8); }
+.mb-2 { margin-bottom: var(--sp-2); }
+.mb-4 { margin-bottom: var(--sp-4); }
+.mb-6 { margin-bottom: var(--sp-6); }
+
+/* ===== 滚动条美化 ===== */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
