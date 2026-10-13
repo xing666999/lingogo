@@ -1,0 +1,146 @@
+/* ===== LingoGo 语种主题色 ===== */
+.theme-en { --c-lang: var(--c-en); }
+.theme-ja { --c-lang: var(--c-ja); }
+.theme-ko { --c-lang: var(--c-ko); }
+
+.lang-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--r-full);
+  font-weight: 700;
+  font-size: var(--fs-xs);
+  color: #fff;
+}
+.lang-badge.en { background: var(--c-en); }
+.lang-badge.ja { background: var(--c-ja); }
+.lang-badge.ko { background: var(--c-ko); }
+
+.lang-card {
+  border-radius: var(--r-xl);
+  padding: var(--sp-6);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform var(--t-fast) var(--ease);
+  box-shadow: var(--sh-card);
+  -webkit-tap-highlight-color: transparent;
+}
+.lang-card:active { transform: scale(.97); }
+.lang-card.en { background: linear-gradient(135deg, #4FC3F7, #1CB0F6); }
+.lang-card.ja { background: linear-gradient(135deg, #FF7B7B, #FF4B4B); }
+.lang-card.ko { background: linear-gradient(135deg, #4DD0C0, #00B8A9); }
+
+.lang-card .lang-flag { font-size: 36px; }
+.lang-card .lang-name { font-size: var(--fs-2xl); font-weight: 900; }
+.lang-card .lang-sub { font-size: var(--fs-sm); opacity: .9; }
+
+/* 级别卡片 */
+.level-card {
+  border-radius: var(--r-lg);
+  padding: var(--sp-5);
+  background: var(--c-bg);
+  border: 3px solid var(--c-border-soft);
+  cursor: pointer;
+  transition: all var(--t-fast);
+  -webkit-tap-highlight-color: transparent;
+}
+.level-card:active { transform: scale(.97); }
+.level-card .level-code {
+  display: inline-flex;
+  padding: 4px 10px;
+  background: var(--c-primary);
+  color: #fff;
+  border-radius: var(--r-sm);
+  font-weight: 900;
+  font-size: var(--fs-xs);
+  margin-bottom: var(--sp-2);
+}
+
+/* 单元卡片 */
+.unit-card {
+  border-radius: var(--r-lg);
+  padding: var(--sp-5);
+  background: var(--c-bg);
+  border: 2px solid var(--c-border-soft);
+  cursor: pointer;
+  transition: transform var(--t-fast);
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+}
+.unit-card:active { transform: scale(.97); }
+.unit-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+/* 课时列表项 */
+.lesson-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-4);
+  background: var(--c-bg);
+  border-radius: var(--r-md);
+  border: 2px solid var(--c-border-soft);
+  margin-bottom: var(--sp-2);
+  cursor: pointer;
+  transition: all var(--t-fast);
+  -webkit-tap-highlight-color: transparent;
+}
+.lesson-item:active { transform: scale(.98); }
+.lesson-item.locked { opacity: .5; cursor: not-allowed; }
+.lesson-item .lesson-num {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-full);
+  background: var(--c-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+.lesson-item.locked .lesson-num { background: var(--c-border); }
+.lesson-item.completed .lesson-num { background: var(--c-gold); }
+
+/* 推荐卡 */
+.rec-card {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-4) var(--sp-5);
+  border-radius: var(--r-lg);
+  background: var(--c-bg);
+  border: 2px solid var(--c-border-soft);
+  cursor: pointer;
+  transition: transform var(--t-fast);
+  -webkit-tap-highlight-color: transparent;
+}
+.rec-card:active { transform: scale(.97); }
+.rec-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  flex-shrink: 0;
+  color: #fff;
+}
